@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <script src="script.js"></script> <!-- Replace 'your_script.js' with the path to your JavaScript file -->
+</head>
+<body>
+    <h1>Genius Search</h1>
+    <form id="search-form">
+        <input type="text" id="search-input" placeholder="Enter search term...">
+        <button type="submit">Search</button>
+    </form>
+    <div id="search-results"></div>
+</body>
+</html>
+{% endblock %}
