@@ -4,9 +4,8 @@ import keys
 
 app = Flask(__name__, static_folder='static')
 
-
 # example query
-query = 'Hozier'
+query = "Hozier"
 
 
 @app.route('/')
@@ -16,7 +15,7 @@ def index():
 
 @app.route('/search')
 def search():
-    query = request.args.get('q')
+    # query = request.args.get('q')
     if query:
         search_results = search_genius(query)
         return render_template('search_results.html', search_results=search_results)
@@ -33,7 +32,7 @@ def search_genius(query):
         return data['response']['hits']
     else:
         return []
-    
+
 
 @app.route('/authorize')
 def authorize():
@@ -44,16 +43,13 @@ def authorize():
 
 @app.route('/auth_callback')
 def auth_callback():
-    # Retrieve the authorization code from the query parameters
     authorization_code = request.args.get('code')
-
-    # Exchange the authorization code for an access token
     access_token = exchange_code_for_token(authorization_code)
-
-    # Now you have the access token, you can make authenticated requests to the Genius API
-    # Store the access token securely for future use (e.g., in a session)
-
-    return redirect(url_for('index'))
+    if access_token:
+        # Store access_token securely (e.g., in a session)
+        return redirect(url_for('index'))
+    else:
+        return "Failed to obtain access token"
 
 def exchange_code_for_token(authorization_code):
     token_url = "https://api.genius.com/oauth/token"
@@ -65,12 +61,21 @@ def exchange_code_for_token(authorization_code):
         "grant_type": "authorization_code"
     }
 
-    response = requests.post(token_url, data=data)
+    headers = {
+        'User-Agent': 'CompuServe Classic/1.22',
+        'Accept': 'application/json'
+    }
+
+    response = requests.post(token_url, data=data, headers=headers)
+
     if response.status_code == 200:
-        return response.json()['access_token']
+        token_data = response.json()
+        access_token = token_data.get('access_token')
+        return access_token
     else:
+        print("Error:", response.status_code)
         return None
-    
+
 
 
 if __name__ == '__main__':

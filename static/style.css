@@ -18,6 +18,14 @@ h2 {
     text-align: center;
 }
 
+
+h3 {
+    padding: 40px;
+    background-color: black;
+    font-size: 14px;
+    color: white;
+}
+
 footer {
     padding: 10px;
     text-align: center;

@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artist Profile</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Artist Profile</h1>
-    <h2>{{ artist_name }}</h2>
-    <img src="{{ artist_image }}" alt="Artist Image">
-    <p>{{ artist_description }}</p>
+    <header>
+        <h1>Artist Name</h1>
+        <img src="artist.jpg" alt="Artist Image">
+    </header>
+    
+    <main>
+        <section id="biography">
+            <h2>Biography</h2>
+            <p>This is a brief biography of the artist...</p>
+        </section>
+        
+        <section id="discography">
+            <h2>Discography</h2>
+            <ul>
+                <li>Album 1</li>
+                <li>Album 2</li>
+                <li>Album 3</li>
+            </ul>
+        </section>
 </body>
 </html>

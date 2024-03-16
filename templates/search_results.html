@@ -7,15 +7,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <script src="script.js"></script> <!-- Replace 'your_script.js' with the path to your JavaScript file -->
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Genius Search</h1>
     <form id="search-form">
         <input type="text" id="search-input" placeholder="Enter search term...">
         <button type="submit">Search</button>
     </form>
     <div id="search-results"></div>
 </body>
+
+<h3>
+<section id="search-results">
+    <!-- Display search results here -->
+    <ul>
+        <li><a href="artist_profile.html">Artist 1</a></li>
+        <li><a href="artist_profile.html">Artist 2</a></li>
+        <!-- Add more search results -->
+    </ul>
+</section>
+</h3>
+
+
 </html>
 {% endblock %}
